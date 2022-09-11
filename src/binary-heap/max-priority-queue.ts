@@ -13,7 +13,7 @@ export default class MaxPriorityQueue {
     }
 
     /**
-     * Ritorna il valore piú alto della coda, cioé il primo.
+     * Ritorna il valore massimo della coda, cioé il primo.
      */
     maximum(): number | null {
         if (this.elements.length === 0) {
@@ -26,7 +26,7 @@ export default class MaxPriorityQueue {
     /**
      * Estrare il massimo valore dalla coda.
      * Estraendolo bisogna ribilanciare l'albero, tuttavia questo non fa si che
-     * l'albero sia ordinato, semplicemente rispetterá la condizione di MaxHeapify.
+     * l'albero sia ordinato, semplicemente rispetterá la condizione di MaxHeap.
      */
     extractMax(): number | null {
         if (this.elements.length === 0) {
@@ -53,7 +53,7 @@ export default class MaxPriorityQueue {
      * Incrementa la chiave specificata con un nuovo valore.
      * Se il valore della chiave é inferiore nessuna operazione viene eseguita.
      * Alla sostituzione potrebbe verificarsi la condizione per cui il nuovo valore
-     * é maggiore rispetto al padre, quindi la condizione di MaxHeapify non sarebbe
+     * é maggiore rispetto al padre, quindi la condizione di MaxHeap non sarebbe
      * piú soddisfatta. É necessario quindi attraversare tutti i padri per trovare
      * il posto piú appropriato per il nuovo valore.
      * Questo metodo non ordina l'albero, semplicemente rispetta la proprietá 
@@ -73,7 +73,7 @@ export default class MaxPriorityQueue {
         this.elements[key] = value;
 
         let parentKey = ~~(key / 2);
-        while (key > 1 && this.elements[parentKey] < this.elements[key]) {
+        while (key > 0 && this.elements[parentKey] < this.elements[key]) {
             const temp = this.elements[parentKey];
             this.elements[parentKey] = this.elements[key];
             this.elements[key] = temp;

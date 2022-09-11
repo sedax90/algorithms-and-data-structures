@@ -1,6 +1,7 @@
 import { assertArrayIncludes, assertEquals } from "https://deno.land/std@0.154.0/testing/asserts.ts";
 import { BinaryHeap } from "../src/binary-heap/binary-heap.ts";
 import MaxPriorityQueue from "../src/binary-heap/max-priority-queue.ts";
+import MinPriorityQueue from "../src/binary-heap/min-priority-queue.ts";
 
 const input = [4, 1, 3, 2, 16, 9, 10, 14, 8, 7];
 let binaryHeap!: BinaryHeap;
@@ -53,4 +54,25 @@ Deno.test("maxPriorityQueue", () => {
 
     queue.sort();
     assertEquals(queue.maximum(), 25);
+});
+
+Deno.test("minPriorityQueue", () => {
+    const queue = new MinPriorityQueue(input);
+
+    let min = queue.minimum();
+    assertEquals(min, 1);
+
+    min = queue.extractMin();
+    assertEquals(min, 1);
+    assertEquals(queue.getElements().length, 9);
+
+    queue.decreaseKey(0, 0);
+    assertArrayIncludes(queue.getElements(), [0]);
+
+    queue.sort();
+    assertEquals(queue.minimum(), 0);
+
+    queue.insert(5);
+    assertEquals(queue.getElements().length, 10);
+    assertArrayIncludes(queue.getElements(), [5]);
 });
