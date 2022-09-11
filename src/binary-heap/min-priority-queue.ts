@@ -1,5 +1,11 @@
 import { BinaryHeap } from "./binary-heap.ts";
 
+/**
+ * Una coda di prioritá é una struttura dati che consente di mantenere un insieme
+ * di elementi ciascuno dei quali ha un valore associato (chiave).
+ * La coda di massima prioritá supporta le operazioni: MINIMUM, EXTRACT_MIN,
+ * DECREASE_KEY.
+ */
 export default class MinPriorityQueue {
     private binaryHeap!: BinaryHeap;
 
