@@ -4,6 +4,11 @@ export class BinaryHeap {
 
     private heapSize!: number;
 
+    setElements(elements: number[]): void {
+        this.elements = elements;
+        this.heapSize = elements.length;
+    }
+
     buildMaxHeap(): number[] {
         let elements = this.elements;
         this.heapSize = elements.length;
@@ -26,7 +31,7 @@ export class BinaryHeap {
         return elements;
     }
 
-    private maxHeapify(elements: number[], parent: number): number[] {
+    maxHeapify(elements: number[], parent: number): number[] {
         const leftIndex = parent * 2 + 1;
         const rightIndex = parent * 2 + 2;
         let maxIndex = parent;
@@ -50,7 +55,7 @@ export class BinaryHeap {
         return elements;
     }
 
-    private minHeapify(elements: number[], parent: number): number[] {
+    minHeapify(elements: number[], parent: number): number[] {
         const leftIndex = parent * 2 + 1;
         const rightIndex = parent * 2 + 2;
         let minIndex = parent;
